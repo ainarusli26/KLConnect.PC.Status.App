@@ -27,7 +27,7 @@ namespace KLConnect.PC.Status.App
         public PcStatusDAL()
         {
             UAPIhelp = new UapiHelper();
-            UAPIhelp.InitalizeUser("KCIC001", "AKJUF8AD-TCL4-VRHZ-Q7F2-LMJBHW28QJ4J", "KTR+Diagnostic");
+            UAPIhelp.InitalizeUser("KCID028", "5GP7K4Z3-D3D9-XGP9-L54A-492FSRBLP2X7", "KTR+Diagnostic");
         }
 
         public async Task<List<UpdateStatusModel>> sendStatus(string pcname, int status)
