@@ -10,8 +10,6 @@ namespace KLConnect.PC.Status.App
 {
     class Program
     {
-        static int stat = 3;
-        static PcStatusDAL dal = new PcStatusDAL();
         static async Task Main(string[] args)
         {
             int status = 0;
@@ -22,24 +20,17 @@ namespace KLConnect.PC.Status.App
 
             List<string> appNames = appName.Split(",").ToList() ;
             status = ((List<UpdateStatusModel>)await PcStatusDAL.Instance.sendStatus(pcName, turnOn))[0].RM;
-            if (status == 1)
-            {
+
                 Process[] processes = Process.GetProcesses();
                 foreach (var proc in processes)
                 {
                     if (appNames.Contains(proc.MainWindowTitle))
                     {
                         status = ((List<UpdateStatusModel>)await PcStatusDAL.Instance.sendStatus(pcName, active))[0].RM;
-                        if(status == 1)
-                        {
-                            break;
-                        }
+                        break;
                     }
 
                 }
             }
-            
-        }
-
     }
 }
